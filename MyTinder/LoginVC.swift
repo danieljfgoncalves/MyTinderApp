@@ -116,14 +116,14 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
         }
     }
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        
-        return pageSnapshots.count
-    }
-
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        
-        return 0
-    }
+//    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+//        
+//        return pageSnapshots.count
+//    }
+//
+//    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+//        
+//        return 0
+//    }
     
 }

@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		E44C17761B13F9D500BCAFA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44C17751B13F9D500BCAFA7 /* AppDelegate.swift */; };
-		E44C17781B13F9D500BCAFA7 /* LoginViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44C17771B13F9D500BCAFA7 /* LoginViewC.swift */; };
 		E44C177B1B13F9D500BCAFA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E44C17791B13F9D500BCAFA7 /* Main.storyboard */; };
 		E44C177D1B13F9D500BCAFA7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E44C177C1B13F9D500BCAFA7 /* Images.xcassets */; };
 		E44C17801B13F9D500BCAFA7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E44C177E1B13F9D500BCAFA7 /* LaunchScreen.xib */; };
 		E44C178C1B13F9D600BCAFA7 /* MyTinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44C178B1B13F9D600BCAFA7 /* MyTinderTests.swift */; };
-		E44C17971B140B4000BCAFA7 /* PageContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44C17961B140B4000BCAFA7 /* PageContentVC.swift */; };
 		E44C17CB1B1509CD00BCAFA7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44C17C81B1509CD00BCAFA7 /* Bolts.framework */; };
 		E44C17CC1B1509CD00BCAFA7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44C17C91B1509CD00BCAFA7 /* Parse.framework */; };
 		E44C17CD1B1509CD00BCAFA7 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44C17CA1B1509CD00BCAFA7 /* ParseFacebookUtilsV4.framework */; };
@@ -49,14 +47,12 @@
 		E44C17701B13F9D500BCAFA7 /* MyTinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44C17741B13F9D500BCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E44C17751B13F9D500BCAFA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E44C17771B13F9D500BCAFA7 /* LoginViewC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewC.swift; sourceTree = "<group>"; };
 		E44C177A1B13F9D500BCAFA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E44C177C1B13F9D500BCAFA7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E44C177F1B13F9D500BCAFA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E44C17851B13F9D600BCAFA7 /* MyTinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44C178A1B13F9D600BCAFA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E44C178B1B13F9D600BCAFA7 /* MyTinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTinderTests.swift; sourceTree = "<group>"; };
-		E44C17961B140B4000BCAFA7 /* PageContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentVC.swift; sourceTree = "<group>"; };
 		E44C17C81B1509CD00BCAFA7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		E44C17C91B1509CD00BCAFA7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E44C17CA1B1509CD00BCAFA7 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
@@ -175,7 +171,6 @@
 		E44C17951B140B1000BCAFA7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E44C17F11B16448A00BCAFA7 /* old */,
 				E44C17EF1B16144700BCAFA7 /* LoginVC.swift */,
 				E44C17EC1B16043300BCAFA7 /* TutorialContentVC.swift */,
 			);
@@ -204,15 +199,6 @@
 				E44C17E81B1511BB00BCAFA7 /* FBSDKShareKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E44C17F11B16448A00BCAFA7 /* old */ = {
-			isa = PBXGroup;
-			children = (
-				E44C17771B13F9D500BCAFA7 /* LoginViewC.swift */,
-				E44C17961B140B4000BCAFA7 /* PageContentVC.swift */,
-			);
-			name = old;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,8 +303,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E44C17ED1B16043300BCAFA7 /* TutorialContentVC.swift in Sources */,
-				E44C17971B140B4000BCAFA7 /* PageContentVC.swift in Sources */,
-				E44C17781B13F9D500BCAFA7 /* LoginViewC.swift in Sources */,
 				E44C17761B13F9D500BCAFA7 /* AppDelegate.swift in Sources */,
 				E44C17F01B16144700BCAFA7 /* LoginVC.swift in Sources */,
 			);
@@ -530,6 +514,7 @@
 				E44C17911B13F9D600BCAFA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E44C17921B13F9D600BCAFA7 /* Build configuration list for PBXNativeTarget "MyTinderTests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +523,7 @@
 				E44C17941B13F9D600BCAFA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

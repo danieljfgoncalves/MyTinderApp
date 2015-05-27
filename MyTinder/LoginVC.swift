@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewControllerDelegate{
+class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewControllerDelegate, FBSDKLoginButtonDelegate {
     
     // Properties
     var tutorialVC:UIPageViewController!
@@ -51,9 +51,43 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
         view.addSubview(logo)
         view.bringSubviewToFront(logo)
         
-        // Facebook Login
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        if FBSDKAccessToken.currentAccessToken() != nil
+        {
+            // User is already logged in, do work such as go to next view controller.
+            presentViewController(MainVC(), animated: true, completion: nil)
+        }
+        else
+        {
+            let fbLoginButton : FBSDKLoginButton = FBSDKLoginButton()
+            self.view.addSubview(fbLoginButton)
+            self.view.bringSubviewToFront(fbLoginButton)
+            fbLoginButton.center = CGPoint(x: view.center.x, y: view.frame.size.height - view.frame.size.height / 8)
+            fbLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
+            fbLoginButton.delegate = self
+        }
         
     }
+    
+    // Facebook Login Delegate functions
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        
+//        presentViewController(MainVC(), animated: true, completion: nil)
+        
+        
+        
+        
+    }
+
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        
+    }
+    
     
     // Tutorial PageViewController functions
             // UIPageViewControllerDataSource required functions
@@ -115,7 +149,6 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
 
         }
     }
-    
 //    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
 //        
 //        return pageSnapshots.count

@@ -31,6 +31,7 @@
 		E44C17EB1B1511BC00BCAFA7 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44C17E81B1511BB00BCAFA7 /* FBSDKShareKit.framework */; };
 		E44C17ED1B16043300BCAFA7 /* TutorialContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44C17EC1B16043300BCAFA7 /* TutorialContentVC.swift */; };
 		E44C17F01B16144700BCAFA7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44C17EF1B16144700BCAFA7 /* LoginVC.swift */; };
+		E44C17F31B167A2F00BCAFA7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44C17F21B167A2F00BCAFA7 /* MainVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		E44C17E81B1511BB00BCAFA7 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		E44C17EC1B16043300BCAFA7 /* TutorialContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialContentVC.swift; sourceTree = "<group>"; };
 		E44C17EF1B16144700BCAFA7 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		E44C17F21B167A2F00BCAFA7 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			children = (
 				E44C17EF1B16144700BCAFA7 /* LoginVC.swift */,
 				E44C17EC1B16043300BCAFA7 /* TutorialContentVC.swift */,
+				E44C17F21B167A2F00BCAFA7 /* MainVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E44C17ED1B16043300BCAFA7 /* TutorialContentVC.swift in Sources */,
+				E44C17F31B167A2F00BCAFA7 /* MainVC.swift in Sources */,
 				E44C17761B13F9D500BCAFA7 /* AppDelegate.swift in Sources */,
 				E44C17F01B16144700BCAFA7 /* LoginVC.swift in Sources */,
 			);

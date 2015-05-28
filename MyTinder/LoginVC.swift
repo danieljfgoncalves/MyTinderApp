@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewControllerDelegate, FBSDKLoginButtonDelegate {
     
@@ -68,7 +69,7 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
             self.view.addSubview(fbLoginButton)
             self.view.bringSubviewToFront(fbLoginButton)
             fbLoginButton.center = CGPoint(x: view.center.x, y: view.frame.size.height - view.frame.size.height / 8)
-            fbLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
+            fbLoginButton.readPermissions = ["public_profile", "email", "user_likes"]
             fbLoginButton.delegate = self
         }
         
@@ -76,18 +77,71 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
     
     // Facebook Login Delegate functions
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        
-//        presentViewController(MainVC(), animated: true, completion: nil)
-        
+
+        PFFacebookUtils.logInInBackgroundWithAccessToken(result.token, block: { (user: PFUser?, error: NSError?) -> Void in
+            
+            let parseUser = user
+            
+            if parseUser == nil {
+                println("Uh oh. The user cancelled the Facebook login.")
+                println("\(error?.description)")
+                
+                let alertView = UIAlertView(title: "Oops somethings wrong", message: "Please try loging in again. Thank you", delegate: self, cancelButtonTitle: "Try Again")
+                
+            } else if parseUser!.isNew {
+                println("User signed up and logged in through Facebook!")
+            } else {
+                println("User logged in through Facebook!")
+                self.fbGraphRequestAndParse(parseUser!)
+            }
+        })
         
         
         
     }
 
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        
+        PFUser.logOut()
     }
     
+    // Facebook Graph Request
+    
+    func fbGraphRequestAndParse(user: PFUser) {
+        
+        let graphUrl = "me?fields=id,name,picture.type(square).width(300).height(300),age_range,gender,email,sports,favorite_teams"
+        
+        let fbGraphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: graphUrl, parameters: nil)
+        fbGraphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if (error != nil) {
+                // Error Description
+                println("Error: \(error.description)")
+            }
+            else {
+                println("\(result)")
+                
+                // Sent to Parse
+                user.email              = result["email"] as? String
+                user["fbID"]            = result["id"]
+                user["fullName"]        = result["name"]
+                user["gender"]          = result["gender"]
+                user["profilePicUrl"]   = result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as! String
+                user.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError?) -> Void in
+                    if (succeeded == true) {
+                        // The object has been saved.
+                        println("Info saved to Parse.")
+                        
+                        // Present next View Controller
+                        self.presentViewController(MainVC(), animated: true, completion: nil)
+                        
+                    } else {
+                        // There was a problem, check error.
+                        println("\(error?.description)")
+                    }
+                })
+                            }
+        })
+    }
     
     // Tutorial PageViewController functions
             // UIPageViewControllerDataSource required functions

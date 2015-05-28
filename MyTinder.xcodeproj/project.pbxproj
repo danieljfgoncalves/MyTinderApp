@@ -173,8 +173,8 @@
 		E44C17951B140B1000BCAFA7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E44C17EF1B16144700BCAFA7 /* LoginVC.swift */,
 				E44C17EC1B16043300BCAFA7 /* TutorialContentVC.swift */,
+				E44C17EF1B16144700BCAFA7 /* LoginVC.swift */,
 				E44C17F21B167A2F00BCAFA7 /* MainVC.swift */,
 			);
 			name = Controllers;

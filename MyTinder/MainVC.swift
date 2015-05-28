@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Parse
 
-class MainVC: UIViewController {
+class MainVC: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,22 +22,24 @@ class MainVC: UIViewController {
         test.text = "TEST"
         view.addSubview(test)
         
+        let fbLoginButton : FBSDKLoginButton = FBSDKLoginButton()
+        self.view.addSubview(fbLoginButton)
+        self.view.bringSubviewToFront(fbLoginButton)
+        fbLoginButton.center = CGPoint(x: view.center.x, y: view.frame.size.height - view.frame.size.height / 8)
+        fbLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        fbLoginButton.delegate = self
+        
     }
 
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {}
+
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        PFUser.logOut()
+        presentViewController(LoginVC(), animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -35,11 +35,7 @@ class MainVC: UIViewController, FBSDKLoginButtonDelegate {
 
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         PFUser.logOut()
+        println("Your logged Out")
         presentViewController(LoginVC(), animated: true, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

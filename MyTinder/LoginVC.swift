@@ -92,6 +92,7 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
 
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         PFUser.logOut()
+        println("Your logged out")
     }
     
     // Facebook Graph Request

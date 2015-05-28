@@ -115,8 +115,8 @@
 		E44C17671B13F9D500BCAFA7 = {
 			isa = PBXGroup;
 			children = (
-				E44C17CE1B1509E500BCAFA7 /* Frameworks */,
 				E44C17721B13F9D500BCAFA7 /* MyTinder */,
+				E44C17CE1B1509E500BCAFA7 /* Frameworks */,
 				E44C17881B13F9D600BCAFA7 /* MyTinderTests */,
 				E44C17711B13F9D500BCAFA7 /* Products */,
 			);
@@ -135,10 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				E44C17951B140B1000BCAFA7 /* Controllers */,
-				E44C17751B13F9D500BCAFA7 /* AppDelegate.swift */,
-				E44C17791B13F9D500BCAFA7 /* Main.storyboard */,
 				E44C177C1B13F9D500BCAFA7 /* Images.xcassets */,
-				E44C177E1B13F9D500BCAFA7 /* LaunchScreen.xib */,
 				E44C17731B13F9D500BCAFA7 /* Supporting Files */,
 			);
 			path = MyTinder;
@@ -147,7 +144,10 @@
 		E44C17731B13F9D500BCAFA7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E44C17751B13F9D500BCAFA7 /* AppDelegate.swift */,
 				E44C17741B13F9D500BCAFA7 /* Info.plist */,
+				E44C17791B13F9D500BCAFA7 /* Main.storyboard */,
+				E44C177E1B13F9D500BCAFA7 /* LaunchScreen.xib */,
 				E44C17E51B150C0E00BCAFA7 /* Objective-C-BridgingHeader.h */,
 			);
 			name = "Supporting Files";
@@ -173,8 +173,7 @@
 		E44C17951B140B1000BCAFA7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E44C17EC1B16043300BCAFA7 /* TutorialContentVC.swift */,
-				E44C17EF1B16144700BCAFA7 /* LoginVC.swift */,
+				E4A1590F1B16BB1D00131E4E /* Login/Tutorial */,
 				E44C17F21B167A2F00BCAFA7 /* MainVC.swift */,
 			);
 			name = Controllers;
@@ -202,6 +201,15 @@
 				E44C17E81B1511BB00BCAFA7 /* FBSDKShareKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4A1590F1B16BB1D00131E4E /* Login/Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				E44C17EC1B16043300BCAFA7 /* TutorialContentVC.swift */,
+				E44C17EF1B16144700BCAFA7 /* LoginVC.swift */,
+			);
+			name = Login/Tutorial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

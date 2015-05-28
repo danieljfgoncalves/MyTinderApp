@@ -27,7 +27,6 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
         tutorialVC = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
         tutorialVC.dataSource = self
         tutorialVC.delegate = self
-
         // Setting the tutorial content VC
         let tutorialContentVC = viewControllerAtIndex(0)
         tutorialVC.setViewControllers([tutorialContentVC!], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
@@ -40,19 +39,14 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
         pageControl.currentPage = 0
         pageControl.numberOfPages = pageImages.count
         pageControl.userInteractionEnabled = false
-//        pageControl.backgroundColor = UIColor.blackColor()
         view.addSubview(pageControl)
         view.bringSubviewToFront(pageControl)
-        
         // Set Logo
         var logo = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 40), size: CGSizeMake(view.frame.width, 50)))
-//        logo.backgroundColor = UIColor.blackColor()
         logo.image = UIImage(named: "myTinder-Logo")
         logo.contentMode = UIViewContentMode.ScaleAspectFit
         view.addSubview(logo)
         view.bringSubviewToFront(logo)
-        
-
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -72,7 +66,6 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
             fbLoginButton.readPermissions = ["public_profile", "email", "user_likes"]
             fbLoginButton.delegate = self
         }
-        
     }
     
     // Facebook Login Delegate functions
@@ -95,9 +88,6 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
                 self.fbGraphRequestAndParse(parseUser!)
             }
         })
-        
-        
-        
     }
 
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
@@ -105,7 +95,6 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
     }
     
     // Facebook Graph Request
-    
     func fbGraphRequestAndParse(user: PFUser) {
         
         let graphUrl = "me?fields=id,name,picture.type(square).width(300).height(300),age_range,gender,email,sports,favorite_teams"
@@ -139,12 +128,11 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
                         println("\(error?.description)")
                     }
                 })
-                            }
+            }
         })
     }
     
     // Tutorial PageViewController functions
-            // UIPageViewControllerDataSource required functions
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
         var index = (viewController as! TutorialContentVC).pageIndex!
@@ -184,8 +172,7 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
         return tutorialContentVC
     }
     
-    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool)
-    {
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
         if finished && completed {
             let vc = previousViewControllers[0] as! TutorialContentVC
             if let currentVC = self.currentPageVC {
@@ -203,14 +190,4 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
 
         }
     }
-//    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-//        
-//        return pageSnapshots.count
-//    }
-//
-//    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-//        
-//        return 0
-//    }
-    
 }

@@ -25,10 +25,6 @@ class EditProfileVC: UIViewController {
         var currentUser = PFUser.currentUser()
         
         emailTextField.text = currentUser?.email
-        var string:String = currentUser["profilePicUrl"]
-        var url = NSURL(string: string)
-        var data = NSData(contentsOfURL: url)
-        profilePicIV.image = UIImage(data: data)
         
         
     }

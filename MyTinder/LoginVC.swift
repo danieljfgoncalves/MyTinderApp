@@ -112,7 +112,7 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
             else {
                 println("\(result)")
                 
-                // Sent to Parse
+                // Send to Parse
                 user.email              = result["email"] as? String
                 user["fbID"]            = result["id"]
                 user["fullName"]        = result["name"]

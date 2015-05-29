@@ -63,7 +63,7 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
             self.view.addSubview(fbLoginButton)
             self.view.bringSubviewToFront(fbLoginButton)
             fbLoginButton.center = CGPoint(x: view.center.x, y: view.frame.size.height - view.frame.size.height / 8)
-            fbLoginButton.readPermissions = ["public_profile", "email", "user_likes"]
+            fbLoginButton.readPermissions = ["public_profile", "email", "user_likes", "user_relationship_details"]
             fbLoginButton.delegate = self
         }
     }
@@ -83,6 +83,8 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
                 
             } else if parseUser!.isNew {
                 println("User signed up and logged in through Facebook!")
+                self.fbGraphRequestAndParse(parseUser!)
+                self.presentViewController(EditProfileVC(), animated: true, completion: nil)
             } else {
                 println("User logged in through Facebook!")
                 self.fbGraphRequestAndParse(parseUser!)
@@ -98,7 +100,7 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
     // Facebook Graph Request
     func fbGraphRequestAndParse(user: PFUser) {
         
-        let graphUrl = "me?fields=id,name,picture.type(square).width(300).height(300),age_range,gender,email,sports,favorite_teams"
+        let graphUrl = "me?fields=id,name,picture.type(square).width(300).height(300),age_range,gender,email,sports,favorite_teams,interested_in"
         
         let fbGraphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: graphUrl, parameters: nil)
         fbGraphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in

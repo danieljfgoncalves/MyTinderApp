@@ -54,7 +54,7 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
         
         if FBSDKAccessToken.currentAccessToken() != nil
         {
-            // User is already logged in, do work such as go to next view controller.
+            // User is already logged in, go to main view controller.
             presentViewController(MainVC(), animated: true, completion: nil)
         }
         else
@@ -78,29 +78,26 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
             if parseUser == nil {
                 println("Uh oh. The user cancelled the Facebook login.")
                 println("\(error?.description)")
-                
                 let alertView = UIAlertView(title: "Oops somethings wrong", message: "Please try loging in again. Thank you", delegate: self, cancelButtonTitle: "Try Again")
-                
             } else if parseUser!.isNew {
                 println("User signed up and logged in through Facebook!")
-                self.fbGraphRequestAndParse(parseUser!)
+//                self.fbGraphRequestSendUpdatedPhotoToParse(parseUser!)
                 self.presentViewController(EditProfileVC(), animated: true, completion: nil)
             } else {
                 println("User logged in through Facebook!")
-                self.fbGraphRequestAndParse(parseUser!)
+                self.fbGraphRequestSendUpdatedPhotoToParse(parseUser!)
             }
         })
     }
-
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         PFUser.logOut()
         println("Your logged out")
     }
     
     // Facebook Graph Request
-    func fbGraphRequestAndParse(user: PFUser) {
+    func fbGraphRequestSendUpdatedPhotoToParse(user: PFUser) {
         
-        let graphUrl = "me?fields=id,name,picture.type(square).width(300).height(300),age_range,gender,email,sports,favorite_teams,interested_in"
+        let graphUrl = "me?fields=picture.type(square).width(300).height(300)"
         
         let fbGraphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: graphUrl, parameters: nil)
         fbGraphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
@@ -113,10 +110,6 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
                 println("\(result)")
                 
                 // Send to Parse
-                user.email              = result["email"] as? String
-                user["fbID"]            = result["id"]
-                user["fullName"]        = result["name"]
-                user["gender"]          = result["gender"]
                 user["profilePicUrl"]   = result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as! String
                 user.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError?) -> Void in
                     if (succeeded == true) {
@@ -146,7 +139,6 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
 
         return self.viewControllerAtIndex(index)
     }
-    
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
         var index = (viewController as! TutorialContentVC).pageIndex!
@@ -160,7 +152,6 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
         }
         return self.viewControllerAtIndex(index)
     }
-    
     func viewControllerAtIndex(index : Int) -> UIViewController? {
         
         if ((self.pageSnapshots.count == 0) || (index >= self.pageSnapshots.count)) {
@@ -174,7 +165,6 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
         
         return tutorialContentVC
     }
-    
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
         if finished && completed {
             let vc = previousViewControllers[0] as! TutorialContentVC
@@ -184,7 +174,6 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
 
         }
     }
-    
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
         if pendingViewControllers.count > 0{
             let vc = pendingViewControllers[0] as! TutorialContentVC

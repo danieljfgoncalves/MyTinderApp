@@ -81,11 +81,10 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
                 let alertView = UIAlertView(title: "Oops somethings wrong", message: "Please try loging in again. Thank you", delegate: self, cancelButtonTitle: "Try Again")
             } else if parseUser!.isNew {
                 println("User signed up and logged in through Facebook!")
-//                self.fbGraphRequestSendUpdatedPhotoToParse(parseUser!)
-                self.presentViewController(EditProfileVC(), animated: true, completion: nil)
+                self.presentViewController(SignUpVC(), animated: true, completion: nil)
             } else {
                 println("User logged in through Facebook!")
-                self.fbGraphRequestSendUpdatedPhotoToParse(parseUser!)
+                self.presentViewController(MainVC(), animated: true, completion: nil)
             }
         })
     }
@@ -94,39 +93,39 @@ class LoginVC: UIViewController, UIPageViewControllerDataSource,UIPageViewContro
         println("Your logged out")
     }
     
-    // Facebook Graph Request
-    func fbGraphRequestSendUpdatedPhotoToParse(user: PFUser) {
-        
-        let graphUrl = "me?fields=picture.type(square).width(300).height(300)"
-        
-        let fbGraphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: graphUrl, parameters: nil)
-        fbGraphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            if (error != nil) {
-                // Error Description
-                println("Error: \(error.description)")
-            }
-            else {
-                println("\(result)")
-                
-                // Send to Parse
-                user["profilePicUrl"]   = result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as! String
-                user.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError?) -> Void in
-                    if (succeeded == true) {
-                        // The object has been saved.
-                        println("Info saved to Parse.")
-                        
-                        // Present next View Controller
-                        self.presentViewController(MainVC(), animated: true, completion: nil)
-                        
-                    } else {
-                        // There was a problem, check error.
-                        println("\(error?.description)")
-                    }
-                })
-            }
-        })
-    }
+//    // Facebook Graph Request
+//    func fbGraphRequestSendUpdatedPhotoToParse(user: PFUser) {
+//        
+//        let graphUrl = "me?fields=picture.type(square).width(300).height(300)"
+//        
+//        let fbGraphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: graphUrl, parameters: nil)
+//        fbGraphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+//            
+//            if (error != nil) {
+//                // Error Description
+//                println("Error: \(error.description)")
+//            }
+//            else {
+//                println("\(result)")
+//                
+//                // Send to Parse
+//                user["profilePicUrl"]   = result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as! String
+//                user.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError?) -> Void in
+//                    if (succeeded == true) {
+//                        // The object has been saved.
+//                        println("Info saved to Parse.")
+//                        
+//                        // Present next View Controller
+//                        self.presentViewController(MainVC(), animated: true, completion: nil)
+//                        
+//                    } else {
+//                        // There was a problem, check error.
+//                        println("\(error?.description)")
+//                    }
+//                })
+//            }
+//        })
+//    }
     
     // Tutorial PageViewController functions
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {

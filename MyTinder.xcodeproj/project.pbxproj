@@ -32,6 +32,7 @@
 		E44C17ED1B16043300BCAFA7 /* TutorialContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44C17EC1B16043300BCAFA7 /* TutorialContentVC.swift */; };
 		E44C17F01B16144700BCAFA7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44C17EF1B16144700BCAFA7 /* LoginVC.swift */; };
 		E44C17F31B167A2F00BCAFA7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44C17F21B167A2F00BCAFA7 /* MainVC.swift */; };
+		E45B6BD21B1AB7A800E6939C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B6BD11B1AB7A800E6939C /* UserManager.swift */; };
 		E4A159411B17939700131E4E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A159401B17939700131E4E /* MapKit.framework */; };
 		E4A159451B179F6200131E4E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A159441B179F6200131E4E /* SignUpVC.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		E44C17EC1B16043300BCAFA7 /* TutorialContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialContentVC.swift; sourceTree = "<group>"; };
 		E44C17EF1B16144700BCAFA7 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		E44C17F21B167A2F00BCAFA7 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		E45B6BD11B1AB7A800E6939C /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E4A159401B17939700131E4E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E4A159441B179F6200131E4E /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 		E44C17721B13F9D500BCAFA7 /* MyTinder */ = {
 			isa = PBXGroup;
 			children = (
+				E45B6BD31B1AB7BF00E6939C /* Models */,
 				E44C17951B140B1000BCAFA7 /* Controllers */,
 				E44C177C1B13F9D500BCAFA7 /* Images.xcassets */,
 				E44C17731B13F9D500BCAFA7 /* Supporting Files */,
@@ -207,6 +210,14 @@
 				E44C17E81B1511BB00BCAFA7 /* FBSDKShareKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E45B6BD31B1AB7BF00E6939C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E45B6BD11B1AB7A800E6939C /* UserManager.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		E4A1590F1B16BB1D00131E4E /* Login/Tutorial */ = {
@@ -320,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E45B6BD21B1AB7A800E6939C /* UserManager.swift in Sources */,
 				E4A159451B179F6200131E4E /* SignUpVC.swift in Sources */,
 				E44C17ED1B16043300BCAFA7 /* TutorialContentVC.swift in Sources */,
 				E44C17F31B167A2F00BCAFA7 /* MainVC.swift in Sources */,

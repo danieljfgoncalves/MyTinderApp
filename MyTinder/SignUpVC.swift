@@ -34,7 +34,7 @@ class SignUpVC: UIViewController {
             var imagePFFile:PFFile = PFFile(name: "Profile Picture", data: imageData)
             user["profilePic"] = imagePFFile
             user["fullname"] = nameTextField.text
-            user["age"] = ageTextField.text
+            user["age"] = (ageTextField.text)
             user.email = emailTextField.text
             user["gender"] = gender
             user["fbID"] = fbID
